@@ -1,0 +1,26 @@
+transform:
+  outputs:
+
+    dev:
+      type: postgres
+      threads: 1
+      host: localhost
+      port: 5432
+      user: admin
+      pass: admin
+      dbname: postgres
+      schema: public
+
+    prod:
+      type: postgres
+      threads: 1
+      host: localhost
+      port: 5432
+      user: admin
+      pass: admin
+      dbname: postgres
+      schema: public
+
+  target: dev
+
+
