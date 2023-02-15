@@ -20,7 +20,8 @@ AIRFLOW_CONN_DW_ANALYTICS with host as the name of the container name from postg
 
 --mongodb
 docker exec -it [container name] bash 
-# mongosh 
+ 
+mongosh 
 for authentication we switch to the admin database 
 use admin
 db.auth("myUserAdmin", passwordPrompt()) or instead db.auth("myUserAdmin") and then enter the password
@@ -30,3 +31,12 @@ we can see our database from the init script sample_db
 use sample_db
 we can check for example the number of documents in our sample_collection from the init script
 db.sample_collection.countDocuments() 
+
+Plans:
+ingest data through kafka -> spark streaming -> mongodb
+ingest data through some batch method -> postgres 
+make some transformations using DBT
+store those results on a datawarehouse
+
+
+
