@@ -61,7 +61,7 @@ x-airflow-common:
     - ./src/airflow/dags:/opt/airflow/dags
     - ./src/airflow/logs:/opt/airflow/logs
     - ./src/airflow/plugins:/opt/airflow/plugins
-    - ./src/dbt:/tmp/dbt
+    - ./src/dbt:/opt/dbt
   user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
   depends_on:
     - postgres

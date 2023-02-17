@@ -1,1 +1,2 @@
 apache-airflow-providers-mongo==3.1.1
+airflow-dbt-python[postgres]

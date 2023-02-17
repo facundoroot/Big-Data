@@ -4,7 +4,7 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 
-DAG_ID = "postgres_operator_dag"
+DAG_ID = "example_Postgres"
 
 with DAG(
     dag_id=DAG_ID,

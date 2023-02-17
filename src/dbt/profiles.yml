@@ -4,23 +4,21 @@ transform:
     dev:
       type: postgres
       threads: 1
-      host: localhost
+      host: postgres_database
       port: 5432
-      user: admin
-      pass: admin
-      dbname: postgres
+      user: dw_user
+      pass: dw_password
+      dbname: analytics
       schema: public
 
     prod:
       type: postgres
       threads: 1
-      host: localhost
+      host: postgres_database
       port: 5432
-      user: admin
-      pass: admin
-      dbname: postgres
+      user: dw_user
+      pass: dw_password
+      dbname: analytics
       schema: public
 
   target: dev
-
-
