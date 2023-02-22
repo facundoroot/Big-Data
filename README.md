@@ -35,6 +35,9 @@ db.sample_collection.countDocuments()
 -- pre-commit
 every time you update the .pre-commit-config.yaml you have to run pre-commit install to take into account the new steps
 
+--pytest
+run pytest -v to get a verbose log
+
 
 Plans:
 ingest data through kafka -> spark streaming -> mongodb
