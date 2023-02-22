@@ -62,6 +62,7 @@ x-airflow-common:
     - ./src/airflow/logs:/opt/airflow/logs
     - ./src/airflow/plugins:/opt/airflow/plugins
     - ./src/dbt:/opt/dbt
+    - ./src/src:/opt/src
   user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
   depends_on:
     - postgres
