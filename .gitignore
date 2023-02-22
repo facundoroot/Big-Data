@@ -1,2 +1,3 @@
 venv
 src/airflow/logs
+__pycache__
