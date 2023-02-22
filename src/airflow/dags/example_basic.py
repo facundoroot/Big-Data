@@ -9,7 +9,7 @@ def print_hello():
 
 
 dag = DAG(
-    'hello_world',
+    'example_basic',
     description='Hello World DAG',
     schedule_interval='0 12 * * *',
     start_date=datetime(2017, 3, 20), catchup=False
