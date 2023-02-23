@@ -44,3 +44,4 @@ ingest data through kafka -> spark streaming -> mongodb
 ingest data through some batch method -> postgres
 make some transformations using DBT
 store those results on a datawarehouse
+mask PII data
