@@ -2,11 +2,14 @@ from pathlib import Path
 
 import logging
 
-logging.basicConfig(format='%(name)s - %(asctime)s:: %(message)s', level=logging.INFO)
-LOGGER = logging.getLogger('helpers')
+logging.basicConfig(
+    format='%(name)s - %(asctime)s:: %(message)s',
+    level=logging.INFO
+)
+LOGGER = logging.getLogger('DAG-helpers')
 
 
-QUERY_TEMPLATES_LOCATION = Path(__file__).parent.parent / 'queries'
+QUERY_TEMPLATES_LOCATION = Path(__file__).parent.parent.parent / 'queries'
 
 
 def get_query_path(query_template_path: str) -> str:

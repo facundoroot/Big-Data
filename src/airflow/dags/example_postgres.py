@@ -1,10 +1,8 @@
 from datetime import datetime
 from airflow import DAG
-from airflow.operators.dummy_operator import DummyOperator
-from airflow.operators.python_operator import PythonOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 
-from utils import helpers
+from source.utils import helpers
 
 DAG_ID = "example_Postgres"
 

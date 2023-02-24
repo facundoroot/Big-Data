@@ -1,4 +1,4 @@
-from src.src.example import sm
+from src.airflow.dags.source.dynamic_dags.example import sm
 
 
 def test_sm() -> None:
