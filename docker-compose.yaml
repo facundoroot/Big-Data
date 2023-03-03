@@ -1,26 +1,3 @@
-# Basic Airflow cluster configuration for CeleryExecutor with Redis and PostgreSQL.
-#
-# WARNING: This configuration is for local development. Do not use it in a production deployment.
-#
-# This configuration supports basic configuration using environment variables or an .env file
-# The following variables are supported:
-#
-# AIRFLOW_IMAGE_NAME         - Docker image name used to run Airflow.
-#                              Default: apache/airflow:master-python3.8
-# AIRFLOW_UID                - User ID in Airflow containers
-#                              Default: 50000
-# AIRFLOW_GID                - Group ID in Airflow containers
-#                              Default: 50000
-# _AIRFLOW_WWW_USER_USERNAME - Username for the administrator account.
-#                              Default: airflow
-# _AIRFLOW_WWW_USER_PASSWORD - Password for the administrator account.
-#                              Default: airflow
-#
-# Feel free to modify this file to suit your needs.
----
-
-# Docker from https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html
-# with a few minor changes
 version: '3'
 x-airflow-common:
   &airflow-common
@@ -36,6 +13,7 @@ x-airflow-common:
     AIRFLOW_BE_DB: ${AIRFLOW_BE_DB}
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
+    AIRFLOW__CELERY__WORKER_TIMEOUT: 360
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__MAX_ACTIVE_RUNS_PER_DAG: 1
     AIRFLOW_CONN_SQLITE_DEFAULT: sqlite://
@@ -44,25 +22,17 @@ x-airflow-common:
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${AIRFLOW_BE_USER}:${AIRFLOW_BE_PASSWORD}@${AIRFLOW_BE_HOST}:${AIRFLOW_BE_PORT}/${AIRFLOW_BE_DB}
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${AIRFLOW_BE_USER}:${AIRFLOW_BE_PASSWORD}@${AIRFLOW_BE_HOST}:${AIRFLOW_BE_PORT}/${AIRFLOW_BE_DB}
-    DATAOPS_PROJECT_DIR: /tmp/dataops
-    DATAOPS_DBT_TARGET_DIR: ${DATAOPS_DBT_TARGET_DIR:-}
-    DBT_TARGET_ENV: dev
-    DBT_TYPE: postgres
     DBT_PROFILES_DIR: /tmp/dbt
     DW_USER: ${DW_USER}
     DW_PASSWORD: ${DW_PASSWORD}
     DW_HOST: ${DW_HOST}
     DW_PORT: ${DW_PORT}
     DW_DATABASE: ${DW_DATABASE}
-    DATAOPS_DBT_AUTOMATIC_CLEAN: "${DATAOPS_DBT_AUTOMATIC_CLEAN:-logs}"
     SET_LOGGING_LEVEL: "${SET_LOGGING_LEVEL:-debug}"
 
   volumes:
-    - ./src/airflow/dags:/opt/airflow/dags
-    - ./src/airflow/logs:/opt/airflow/logs
-    - ./src/airflow/plugins:/opt/airflow/plugins
-    - ./src/dbt:/opt/dbt
-    - ./src/src:/opt/src
+   - ./src:/opt
+
   user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
   depends_on:
     - postgres
