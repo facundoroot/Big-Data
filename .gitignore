@@ -2,3 +2,6 @@ src/airflow/logs
 __pycache__
 *venv
 *swp
+airflow.cfg
+airflow.db
+webserver_config.py
