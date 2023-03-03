@@ -15,7 +15,7 @@ with DAG(
     pg_test_task = PostgresOperator(
         task_id="postgres_test",
         postgres_conn_id='postgres_connid',
-        sql=helpers.load_query_template("airflow/datawarehouse/example.sql"),
+        sql=helpers.load_query_template("datawarehouse/example.sql"),
     )
 
     pg_test_task

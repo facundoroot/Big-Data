@@ -1,8 +1,9 @@
 import yaml
 import logging
+import os
 
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List
 
 logging.basicConfig(
     format='%(name)s - %(asctime)s:: %(message)s',
@@ -11,6 +12,28 @@ logging.basicConfig(
 LOGGER = logging.getLogger('DagFactory-utils')
 
 DAG_DEFINITIONS_PATH: Path = Path(__file__).parent.parent.parent / 'yaml_defined_dags'
+
+
+def list_yaml_files_names() -> List[str]:
+
+    """
+    List YAML files from dag definitions folder
+
+    Returns: List of file names from dag definitions folder
+    """
+
+    dag_definitions_path: str = str(DAG_DEFINITIONS_PATH)
+
+    file_names = []
+
+    if not os.listdir(dag_definitions_path):
+        LOGGER.warning(f"empty directory: {dag_definitions_path}")
+    else:
+
+        file_names: List[str] = [file for file in os.listdir(DAG_DEFINITIONS_PATH)]
+
+    LOGGER.info(f"yaml files names: {file_names}")
+    return file_names
 
 
 def yaml_parser(dag_name: str) -> Dict[str, str]:

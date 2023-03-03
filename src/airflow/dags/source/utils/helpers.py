@@ -18,7 +18,7 @@ def get_query_path(query_template_path: str) -> str:
     Returns full path for specific SQL file
 
     Args:
-        *   query_template_path (str): path to SQL file starting from /queries as root for example: airflow/datawarehouse/example.sql
+        *   query_template_path (str): path to SQL file starting from /queries as root for example: datawarehouse/example.sql
 
     Returns: full path for specific SQL file
     """
