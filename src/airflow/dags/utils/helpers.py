@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import logging
+import colorlog
 
 logging.basicConfig(format='%(name)s - %(asctime)s:: %(message)s', level=logging.INFO)
 LOGGER = logging.getLogger('helpers')
@@ -57,3 +58,35 @@ def load_query_template(query_template_path: str) -> str:
         raise
 
     return query
+
+
+def logger(name: str) -> logging.Logger:
+
+    """
+    Configure logger
+
+    Args:
+        *   name: Name for logger
+
+    Returns: Logger object with specified name and colors
+    """
+
+    formatter = colorlog.ColoredFormatter(
+        "%(log_color)s%(levelname)s%(reset)s %(name)s::%(asctime)s:: %(message)s",
+        log_colors={
+            'WARNING': 'yellow',
+            'ERROR': 'red',
+        },
+        reset=True,
+        style='%',
+        datefmt='%d-%H:%M'
+    )
+
+    handler = logging.StreamHandler()
+    handler.setFormatter(formatter)
+
+    LOGGER = logging.getLogger(name)
+    LOGGER.addHandler(handler)
+    LOGGER.setLevel(logging.DEBUG)
+
+    return LOGGER

@@ -1,13 +1,7 @@
 from pathlib import Path
+from src.airflow.dags.utils.helpers import logger
 
-import logging
-
-logging.basicConfig(
-    format='%(name)s - %(asctime)s:: %(message)s',
-    level=logging.INFO
-)
-LOGGER = logging.getLogger('DAG-helpers')
-
+LOGGER = logger('DAG-helpers')
 
 QUERY_TEMPLATES_LOCATION = Path(__file__).parent.parent.parent / 'queries'
 

@@ -5,3 +5,4 @@ __pycache__
 airflow.cfg
 airflow.db
 webserver_config.py
+airflow-worker.pid

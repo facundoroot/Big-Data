@@ -1,7 +1,3 @@
-import logging
+from src.airflow.dags.utils.helpers import logger
 
-logging.basicConfig(
-    format='%(name)s-%(asctime)s::%(message)s',
-    level=logging.INFO
-)
-LOGGER = logging.getLogger('Dag generator')
+LOGGER = logger('Dag generator')

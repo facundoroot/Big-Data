@@ -2,20 +2,17 @@ from airflow import DAG
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 from datetime import datetime
 
+from src.airflow.dags.utils.helpers import logger
+
 from pathlib import Path
 
 import utils
 
 from typing import List, Dict, Any
 
-import logging
 import yaml
 
-logging.basicConfig(
-    format='%(name)s-%(asctime)s::%(message)s',
-    level=logging.INFO
-)
-LOGGER = logging.getLogger('DagFactory')
+LOGGER = logger('DagFactory')
 
 
 class DagFactory:
