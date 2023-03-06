@@ -31,7 +31,10 @@ x-airflow-common:
     SET_LOGGING_LEVEL: "${SET_LOGGING_LEVEL:-debug}"
 
   volumes:
-   - ./src:/opt
+    - ./src/airflow/dags:/opt/airflow/dags
+    - ./src/airflow/logs:/opt/airflow/logs
+    - ./src/airflow/plugins:/opt/airflow/plugins
+    - ./src/dbt:/opt/dbt
 
   user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
   depends_on:
