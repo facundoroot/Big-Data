@@ -1,0 +1,119 @@
+version: '3'
+x-airflow-common:
+  &airflow-common
+  build:
+    context: .
+    dockerfile: Dockerfile
+  environment:
+    &airflow-common-env
+    AIRFLOW_BE_USER: ${AIRFLOW_BE_USER}
+    AIRFLOW_BE_PASSWORD: ${AIRFLOW_BE_PASSWORD}
+    AIRFLOW_BE_PORT: ${AIRFLOW_BE_PORT}
+    AIRFLOW_BE_HOST: ${AIRFLOW_BE_HOST}
+    AIRFLOW_BE_DB: ${AIRFLOW_BE_DB}
+    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
+    AIRFLOW__CELERY__WORKER_TIMEOUT: 360
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__MAX_ACTIVE_RUNS_PER_DAG: 1
+    AIRFLOW_CONN_SQLITE_DEFAULT: sqlite://
+    AIRFLOW_CONN_POSTGRES_CONNID: postgresql://${DW_USER}:${DW_PASSWORD}@${DW_HOST}:${DW_PORT}/${DW_NAME}
+    AIRFLOW_CONN_MONGODB_CONNID: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}:${MONGODB_PORT}/
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${AIRFLOW_BE_USER}:${AIRFLOW_BE_PASSWORD}@${AIRFLOW_BE_HOST}:${AIRFLOW_BE_PORT}/${AIRFLOW_BE_DB}
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${AIRFLOW_BE_USER}:${AIRFLOW_BE_PASSWORD}@${AIRFLOW_BE_HOST}:${AIRFLOW_BE_PORT}/${AIRFLOW_BE_DB}
+    DBT_PROFILES_DIR: /tmp/dbt
+    DW_USER: ${DW_USER}
+    DW_PASSWORD: ${DW_PASSWORD}
+    DW_HOST: ${DW_HOST}
+    DW_PORT: ${DW_PORT}
+    DW_DATABASE: ${DW_DATABASE}
+    SET_LOGGING_LEVEL: "${SET_LOGGING_LEVEL:-debug}"
+
+  volumes:
+    - ./project/templates/airflow/dags:/opt/airflow/dags
+    - ./project/templates/airflow/logs:/opt/airflow/logs
+    - ./project/templates/airflow/plugins:/opt/airflow/plugins
+    - ./project/templates/dbt:/opt/dbt
+
+  user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
+  depends_on:
+    - postgres
+    - redis
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - 5432:5432
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    restart: always
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - 8080:8080
+    restart: always
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    restart: always
+
+  airflow-worker:
+    <<: *airflow-common
+    command: celery worker
+    restart: always
+
+  airflow-init:
+    <<: *airflow-common
+    command: version
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_UPGRADE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: airflow
+      _AIRFLOW_WWW_USER_PASSWORD: airflow
+
+  postgres_db:
+    container_name: postgres_database
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ${DW_USER}
+      POSTGRES_PASSWORD: ${DW_PASSWORD}
+      POSTGRES_DB: ${DW_NAME}
+    ports:
+      - ${DW_LOCAL_MAPPING}:${DW_PORT}
+    volumes:
+      - dw-volume:/var/lib/dw/data
+      - ./data/init.sql:/docker-entrypoint-initdb.d/create_load_tables.sql
+    restart: always
+
+  mongodb:
+    container_name: mongodb_database
+    image: mongo:5.0
+    ports:
+      - ${MONGODB_PORT}:${MONGODB_PORT}
+    volumes:
+      - mongodb-volume:/data/db
+      - ./data/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
+
+volumes:
+  postgres-db-volume:
+  dw-volume:
+  mongodb-volume:

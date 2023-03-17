@@ -1,0 +1,305 @@
+[2023-03-17T12:22:14.103+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: example_dbt.dbt_run_hourly scheduled__2023-03-17T11:00:00+00:00 [queued]>
+[2023-03-17T12:22:14.120+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: example_dbt.dbt_run_hourly scheduled__2023-03-17T11:00:00+00:00 [queued]>
+[2023-03-17T12:22:14.120+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-17T12:22:14.121+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 1
+[2023-03-17T12:22:14.121+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-17T12:22:14.146+0000] {taskinstance.py:1300} INFO - Executing <Task(DbtRunOperator): dbt_run_hourly> on 2023-03-17 11:00:00+00:00
+[2023-03-17T12:22:14.155+0000] {standard_task_runner.py:55} INFO - Started process 57 to run task
+[2023-03-17T12:22:14.161+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'example_dbt', 'dbt_run_hourly', 'scheduled__2023-03-17T11:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/example_dbt.py', '--cfg-path', '/tmp/tmp5wr1vipg']
+[2023-03-17T12:22:14.162+0000] {standard_task_runner.py:83} INFO - Job 5: Subtask dbt_run_hourly
+[2023-03-17T12:22:14.185+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.9/site-packages/***/settings.py:249: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  SQL_ALCHEMY_CONN = conf.get("database", "SQL_ALCHEMY_CONN")
+
+[2023-03-17T12:22:14.223+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.9/site-packages/***/utils/sqlalchemy.py:124: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  return not conf.get("database", "sql_alchemy_conn").startswith("mssql")
+
+[2023-03-17T12:22:14.281+0000] {task_command.py:388} INFO - Running <TaskInstance: example_dbt.dbt_run_hourly scheduled__2023-03-17T11:00:00+00:00 [running]> on host 507704a0a8a9
+[2023-03-17T12:22:14.399+0000] {taskinstance.py:1507} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=example_dbt
+AIRFLOW_CTX_TASK_ID=dbt_run_hourly
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-17T11:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-17T11:00:00+00:00
+[2023-03-17T12:22:14.401+0000] {dbt.py:271} INFO - Initializing temporary directory: /tmp/***tmpjqz24fp7
+[2023-03-17T12:22:19.838+0000] {base.py:43} INFO - Pulling dbt profiles file from: /opt/dbt/
+[2023-03-17T12:22:19.839+0000] {base.py:67} INFO - Pulling dbt project files from: /opt/dbt/
+[2023-03-17T12:22:19.844+0000] {dbt.py:180} INFO - Running dbt configuration: RunTaskConfig(cls=<class 'dbt.task.run.RunTask'>, project_dir='/tmp/airflowtmpjqz24fp7/', profiles_dir='/tmp/airflowtmpjqz24fp7/', profile=None, target=None, compiled_target=None, cache_selected_only=None, fail_fast=None, single_threaded=None, threads=None, use_experimental_parser=None, vars='{}\n', warn_error=None, log_format=None, log_cache_events=False, record_timing_info=None, debug=None, quiet=None, no_print=None, defer=None, partial_parse=False, use_colors=None, static_parser=None, version_check=None, send_anonymous_usage_stats=None, write_json=None, exclude=None, select=['my_first_dbt_model'], selector_name=None, state=None, models=None, full_refresh=False, which='run')
+[2023-03-17T12:22:20.041+0000] {eventmgr.py:57} DEBUG - [0m12:22:20.038263 [debug] [MainThread]: checksum: e05dd7cee44d39ae8ac27965cacd8a6d8d0ab4e8185101e0db84e98f79bee0b6, vars: {}, profile: None, target: None, version: 1.4.5
+[2023-03-17T12:22:20.043+0000] {eventmgr.py:57} DEBUG - [0m12:22:20.042584 [debug] [MainThread]: Partial parsing not enabled
+[2023-03-17T12:22:21.522+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.522368 [debug] [MainThread]: 1699: static parser successfully parsed example/my_second_dbt_model.sql
+[2023-03-17T12:22:21.554+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.554407 [debug] [MainThread]: 1699: static parser successfully parsed example/my_first_dbt_model.sql
+[2023-03-17T12:22:21.738+0000] {logging_mixin.py:137} INFO - 12:22:21  Found 2 models, 4 tests, 0 snapshots, 0 analyses, 291 macros, 0 operations, 1 seed file, 0 sources, 0 exposures, 0 metrics
+[2023-03-17T12:22:21.738+0000] {eventmgr.py:59} INFO - [0m12:22:21  Found 2 models, 4 tests, 0 snapshots, 0 analyses, 291 macros, 0 operations, 1 seed file, 0 sources, 0 exposures, 0 metrics
+[2023-03-17T12:22:21.739+0000] {eventmgr.py:59} INFO - [0m12:22:21.738311 [info ] [MainThread]: Found 2 models, 4 tests, 0 snapshots, 0 analyses, 291 macros, 0 operations, 1 seed file, 0 sources, 0 exposures, 0 metrics
+[2023-03-17T12:22:21.741+0000] {logging_mixin.py:137} INFO - 12:22:21
+[2023-03-17T12:22:21.741+0000] {eventmgr.py:59} INFO - [0m12:22:21  
+[2023-03-17T12:22:21.742+0000] {eventmgr.py:59} INFO - [0m12:22:21.741165 [info ] [MainThread]: 
+[2023-03-17T12:22:21.745+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.745522 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[2023-03-17T12:22:21.749+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.749144 [debug] [ThreadPool]: Acquiring new postgres connection 'list_analytics'
+[2023-03-17T12:22:21.786+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.786175 [debug] [ThreadPool]: Using postgres connection "list_analytics"
+[2023-03-17T12:22:21.788+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.787220 [debug] [ThreadPool]: On list_analytics: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "transform", "target_name": "dev", "connection_name": "list_analytics"} */
+
+    select distinct nspname from pg_namespace
+  
+[2023-03-17T12:22:21.789+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.789363 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[2023-03-17T12:22:21.798+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.797998 [debug] [ThreadPool]: SQL status: SELECT 4 in 0 seconds
+[2023-03-17T12:22:21.804+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.803426 [debug] [ThreadPool]: On list_analytics: Close
+[2023-03-17T12:22:21.808+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.807855 [debug] [ThreadPool]: Acquiring new postgres connection 'create_analytics_public_custom_schema'
+[2023-03-17T12:22:21.810+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.810116 [debug] [ThreadPool]: Acquiring new postgres connection 'create_analytics_public_custom_schema'
+[2023-03-17T12:22:21.811+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.811418 [debug] [ThreadPool]: Creating schema "ReferenceKeyMsg(database='analytics', schema='public_custom_schema', identifier=None)"
+[2023-03-17T12:22:21.827+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.827003 [debug] [ThreadPool]: Using postgres connection "create_analytics_public_custom_schema"
+[2023-03-17T12:22:21.828+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.828217 [debug] [ThreadPool]: On create_analytics_public_custom_schema: BEGIN
+[2023-03-17T12:22:21.829+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.829144 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[2023-03-17T12:22:21.836+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.836315 [debug] [ThreadPool]: SQL status: BEGIN in 0 seconds
+[2023-03-17T12:22:21.837+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.837271 [debug] [ThreadPool]: Using postgres connection "create_analytics_public_custom_schema"
+[2023-03-17T12:22:21.838+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.838039 [debug] [ThreadPool]: On create_analytics_public_custom_schema: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "transform", "target_name": "dev", "connection_name": "create_analytics_public_custom_schema"} */
+create schema if not exists "public_custom_schema"
+[2023-03-17T12:22:21.840+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.840019 [debug] [ThreadPool]: SQL status: CREATE SCHEMA in 0 seconds
+[2023-03-17T12:22:21.843+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.842561 [debug] [ThreadPool]: On create_analytics_public_custom_schema: COMMIT
+[2023-03-17T12:22:21.844+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.843645 [debug] [ThreadPool]: Using postgres connection "create_analytics_public_custom_schema"
+[2023-03-17T12:22:21.844+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.844489 [debug] [ThreadPool]: On create_analytics_public_custom_schema: COMMIT
+[2023-03-17T12:22:21.850+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.850093 [debug] [ThreadPool]: SQL status: COMMIT in 0 seconds
+[2023-03-17T12:22:21.851+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.851072 [debug] [ThreadPool]: On create_analytics_public_custom_schema: Close
+[2023-03-17T12:22:21.856+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.856030 [debug] [ThreadPool]: Acquiring new postgres connection 'list_analytics_public_custom_schema'
+[2023-03-17T12:22:21.874+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.873500 [debug] [ThreadPool]: Using postgres connection "list_analytics_public_custom_schema"
+[2023-03-17T12:22:21.875+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.874769 [debug] [ThreadPool]: On list_analytics_public_custom_schema: BEGIN
+[2023-03-17T12:22:21.876+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.875850 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[2023-03-17T12:22:21.882+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.882016 [debug] [ThreadPool]: SQL status: BEGIN in 0 seconds
+[2023-03-17T12:22:21.883+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.882962 [debug] [ThreadPool]: Using postgres connection "list_analytics_public_custom_schema"
+[2023-03-17T12:22:21.884+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.883781 [debug] [ThreadPool]: On list_analytics_public_custom_schema: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "transform", "target_name": "dev", "connection_name": "list_analytics_public_custom_schema"} */
+select
+      'analytics' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_custom_schema'
+    union all
+    select
+      'analytics' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_custom_schema'
+  
+[2023-03-17T12:22:21.890+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.889851 [debug] [ThreadPool]: SQL status: SELECT 0 in 0 seconds
+[2023-03-17T12:22:21.893+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.893412 [debug] [ThreadPool]: On list_analytics_public_custom_schema: ROLLBACK
+[2023-03-17T12:22:21.895+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.895027 [debug] [ThreadPool]: On list_analytics_public_custom_schema: Close
+[2023-03-17T12:22:21.899+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.899290 [debug] [ThreadPool]: Acquiring new postgres connection 'list_analytics_public'
+[2023-03-17T12:22:21.906+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.906178 [debug] [ThreadPool]: Using postgres connection "list_analytics_public"
+[2023-03-17T12:22:21.907+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.907136 [debug] [ThreadPool]: On list_analytics_public: BEGIN
+[2023-03-17T12:22:21.908+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.907937 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[2023-03-17T12:22:21.913+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.913257 [debug] [ThreadPool]: SQL status: BEGIN in 0 seconds
+[2023-03-17T12:22:21.915+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.914574 [debug] [ThreadPool]: Using postgres connection "list_analytics_public"
+[2023-03-17T12:22:21.916+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.915714 [debug] [ThreadPool]: On list_analytics_public: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "transform", "target_name": "dev", "connection_name": "list_analytics_public"} */
+select
+      'analytics' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'analytics' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[2023-03-17T12:22:21.920+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.920007 [debug] [ThreadPool]: SQL status: SELECT 1 in 0 seconds
+[2023-03-17T12:22:21.923+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.922673 [debug] [ThreadPool]: On list_analytics_public: ROLLBACK
+[2023-03-17T12:22:21.924+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.924010 [debug] [ThreadPool]: On list_analytics_public: Close
+[2023-03-17T12:22:21.942+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.941653 [debug] [MainThread]: Using postgres connection "master"
+[2023-03-17T12:22:21.943+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.942680 [debug] [MainThread]: On master: BEGIN
+[2023-03-17T12:22:21.943+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.943488 [debug] [MainThread]: Opening a new connection, currently in state init
+[2023-03-17T12:22:21.950+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.949730 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[2023-03-17T12:22:21.952+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.951547 [debug] [MainThread]: Using postgres connection "master"
+[2023-03-17T12:22:21.953+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.953197 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "transform", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[2023-03-17T12:22:21.967+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.967067 [debug] [MainThread]: SQL status: SELECT 0 in 0 seconds
+[2023-03-17T12:22:21.971+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.970524 [debug] [MainThread]: On master: ROLLBACK
+[2023-03-17T12:22:21.972+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.971902 [debug] [MainThread]: Using postgres connection "master"
+[2023-03-17T12:22:21.973+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.972941 [debug] [MainThread]: On master: BEGIN
+[2023-03-17T12:22:21.975+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.974449 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[2023-03-17T12:22:21.976+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.975766 [debug] [MainThread]: On master: COMMIT
+[2023-03-17T12:22:21.977+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.977076 [debug] [MainThread]: Using postgres connection "master"
+[2023-03-17T12:22:21.979+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.978688 [debug] [MainThread]: On master: COMMIT
+[2023-03-17T12:22:21.980+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.980164 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[2023-03-17T12:22:21.981+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.981375 [debug] [MainThread]: On master: Close
+[2023-03-17T12:22:21.984+0000] {logging_mixin.py:137} INFO - 12:22:21  Concurrency: 1 threads (target='dev')
+[2023-03-17T12:22:21.984+0000] {eventmgr.py:59} INFO - [0m12:22:21  Concurrency: 1 threads (target='dev')
+[2023-03-17T12:22:21.985+0000] {eventmgr.py:59} INFO - [0m12:22:21.983502 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[2023-03-17T12:22:21.985+0000] {logging_mixin.py:137} INFO - 12:22:21
+[2023-03-17T12:22:21.985+0000] {eventmgr.py:59} INFO - [0m12:22:21  
+[2023-03-17T12:22:21.986+0000] {eventmgr.py:59} INFO - [0m12:22:21.985390 [info ] [MainThread]: 
+[2023-03-17T12:22:21.989+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.989060 [debug] [Thread-1  ]: Began running node model.transform.my_first_dbt_model
+[2023-03-17T12:22:21.990+0000] {logging_mixin.py:137} INFO - 12:22:21  1 of 1 START sql table model public_custom_schema.my_first_dbt_model ........... [RUN]
+[2023-03-17T12:22:21.990+0000] {eventmgr.py:59} INFO - [0m12:22:21  1 of 1 START sql table model public_custom_schema.my_first_dbt_model ........... [RUN]
+[2023-03-17T12:22:21.991+0000] {eventmgr.py:59} INFO - [0m12:22:21.990415 [info ] [Thread-1  ]: 1 of 1 START sql table model public_custom_schema.my_first_dbt_model ........... [RUN]
+[2023-03-17T12:22:21.994+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.993530 [debug] [Thread-1  ]: Acquiring new postgres connection 'model.transform.my_first_dbt_model'
+[2023-03-17T12:22:21.995+0000] {eventmgr.py:57} DEBUG - [0m12:22:21.995095 [debug] [Thread-1  ]: Began compiling node model.transform.my_first_dbt_model
+[2023-03-17T12:22:22.002+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.001756 [debug] [Thread-1  ]: Writing injected SQL for node "model.transform.my_first_dbt_model"
+[2023-03-17T12:22:22.003+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.003128 [debug] [Thread-1  ]: Timing info for model.transform.my_first_dbt_model (compile): 2023-03-17 12:22:21.996119 => 2023-03-17 12:22:22.002956
+[2023-03-17T12:22:22.004+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.004027 [debug] [Thread-1  ]: Began executing node model.transform.my_first_dbt_model
+[2023-03-17T12:22:22.105+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.105527 [debug] [Thread-1  ]: Writing runtime sql for node "model.transform.my_first_dbt_model"
+[2023-03-17T12:22:22.107+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.107095 [debug] [Thread-1  ]: Using postgres connection "model.transform.my_first_dbt_model"
+[2023-03-17T12:22:22.108+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.107985 [debug] [Thread-1  ]: On model.transform.my_first_dbt_model: BEGIN
+[2023-03-17T12:22:22.109+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.108769 [debug] [Thread-1  ]: Opening a new connection, currently in state closed
+[2023-03-17T12:22:22.115+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.114506 [debug] [Thread-1  ]: SQL status: BEGIN in 0 seconds
+[2023-03-17T12:22:22.115+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.115526 [debug] [Thread-1  ]: Using postgres connection "model.transform.my_first_dbt_model"
+[2023-03-17T12:22:22.116+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.116329 [debug] [Thread-1  ]: On model.transform.my_first_dbt_model: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "transform", "target_name": "dev", "node_id": "model.transform.my_first_dbt_model"} */
+
+  
+    
+
+  create  table "analytics"."public_custom_schema"."my_first_dbt_model__dbt_tmp"
+  as (
+    /*
+    Welcome to your first dbt model!
+    Did you know that you can also configure models directly within SQL files?
+    This will override configurations stated in dbt_project.yml
+
+    Try changing "table" to "view" below
+*/
+
+
+
+with employee as (
+
+    select 1 as id
+    union all
+    select null as id
+
+)
+
+select *
+from employee
+
+/*
+    Uncomment the line below to remove records with null `id` values
+*/
+
+-- where id is not null
+  );
+  
+[2023-03-17T12:22:22.120+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.119904 [debug] [Thread-1  ]: SQL status: SELECT 2 in 0 seconds
+[2023-03-17T12:22:22.139+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.139276 [debug] [Thread-1  ]: Using postgres connection "model.transform.my_first_dbt_model"
+[2023-03-17T12:22:22.140+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.140127 [debug] [Thread-1  ]: On model.transform.my_first_dbt_model: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "transform", "target_name": "dev", "node_id": "model.transform.my_first_dbt_model"} */
+alter table "analytics"."public_custom_schema"."my_first_dbt_model__dbt_tmp" rename to "my_first_dbt_model"
+[2023-03-17T12:22:22.141+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.141365 [debug] [Thread-1  ]: SQL status: ALTER TABLE in 0 seconds
+[2023-03-17T12:22:22.189+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.189533 [debug] [Thread-1  ]: On model.transform.my_first_dbt_model: COMMIT
+[2023-03-17T12:22:22.190+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.190373 [debug] [Thread-1  ]: Using postgres connection "model.transform.my_first_dbt_model"
+[2023-03-17T12:22:22.191+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.191043 [debug] [Thread-1  ]: On model.transform.my_first_dbt_model: COMMIT
+[2023-03-17T12:22:22.197+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.196702 [debug] [Thread-1  ]: SQL status: COMMIT in 0 seconds
+[2023-03-17T12:22:22.209+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.208719 [debug] [Thread-1  ]: Using postgres connection "model.transform.my_first_dbt_model"
+[2023-03-17T12:22:22.209+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.209527 [debug] [Thread-1  ]: On model.transform.my_first_dbt_model: /* {"app": "dbt", "dbt_version": "1.4.5", "profile_name": "transform", "target_name": "dev", "node_id": "model.transform.my_first_dbt_model"} */
+drop table if exists "analytics"."public_custom_schema"."my_first_dbt_model__dbt_backup" cascade
+[2023-03-17T12:22:22.211+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.210660 [debug] [Thread-1  ]: SQL status: DROP TABLE in 0 seconds
+[2023-03-17T12:22:22.213+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.213511 [debug] [Thread-1  ]: Timing info for model.transform.my_first_dbt_model (execute): 2023-03-17 12:22:22.004666 => 2023-03-17 12:22:22.213399
+[2023-03-17T12:22:22.214+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.214323 [debug] [Thread-1  ]: On model.transform.my_first_dbt_model: Close
+[2023-03-17T12:22:22.216+0000] {logging_mixin.py:137} INFO - 12:22:22  1 of 1 OK created sql table model public_custom_schema.my_first_dbt_model ...... [SELECT 2 in 0.22s]
+[2023-03-17T12:22:22.216+0000] {eventmgr.py:59} INFO - [0m12:22:22  1 of 1 OK created sql table model public_custom_schema.my_first_dbt_model ...... [[32mSELECT 2[0m in 0.22s]
+[2023-03-17T12:22:22.217+0000] {eventmgr.py:59} INFO - [0m12:22:22.216275 [info ] [Thread-1  ]: 1 of 1 OK created sql table model public_custom_schema.my_first_dbt_model ...... [[32mSELECT 2[0m in 0.22s]
+[2023-03-17T12:22:22.220+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.220111 [debug] [Thread-1  ]: Finished running node model.transform.my_first_dbt_model
+[2023-03-17T12:22:22.223+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.222908 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[2023-03-17T12:22:22.224+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.223956 [debug] [MainThread]: Using postgres connection "master"
+[2023-03-17T12:22:22.225+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.224761 [debug] [MainThread]: On master: BEGIN
+[2023-03-17T12:22:22.226+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.225612 [debug] [MainThread]: Opening a new connection, currently in state closed
+[2023-03-17T12:22:22.231+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.230812 [debug] [MainThread]: SQL status: BEGIN in 0 seconds
+[2023-03-17T12:22:22.232+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.231842 [debug] [MainThread]: On master: COMMIT
+[2023-03-17T12:22:22.233+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.232673 [debug] [MainThread]: Using postgres connection "master"
+[2023-03-17T12:22:22.233+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.233435 [debug] [MainThread]: On master: COMMIT
+[2023-03-17T12:22:22.234+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.234467 [debug] [MainThread]: SQL status: COMMIT in 0 seconds
+[2023-03-17T12:22:22.235+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.235359 [debug] [MainThread]: On master: Close
+[2023-03-17T12:22:22.237+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.237045 [debug] [MainThread]: Connection 'master' was properly closed.
+[2023-03-17T12:22:22.238+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.237938 [debug] [MainThread]: Connection 'model.transform.my_first_dbt_model' was properly closed.
+[2023-03-17T12:22:22.239+0000] {logging_mixin.py:137} INFO - 12:22:22
+[2023-03-17T12:22:22.239+0000] {eventmgr.py:59} INFO - [0m12:22:22  
+[2023-03-17T12:22:22.239+0000] {eventmgr.py:59} INFO - [0m12:22:22.238776 [info ] [MainThread]: 
+[2023-03-17T12:22:22.240+0000] {logging_mixin.py:137} INFO - 12:22:22  Finished running 1 table model in 0 hours 0 minutes and 0.50 seconds (0.50s).
+[2023-03-17T12:22:22.240+0000] {eventmgr.py:59} INFO - [0m12:22:22  Finished running 1 table model in 0 hours 0 minutes and 0.50 seconds (0.50s).
+[2023-03-17T12:22:22.241+0000] {eventmgr.py:59} INFO - [0m12:22:22.240407 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 0.50 seconds (0.50s).
+[2023-03-17T12:22:22.242+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.242400 [debug] [MainThread]: Command end result
+[2023-03-17T12:22:22.261+0000] {logging_mixin.py:137} INFO - 12:22:22
+[2023-03-17T12:22:22.260+0000] {eventmgr.py:59} INFO - [0m12:22:22  
+[2023-03-17T12:22:22.261+0000] {eventmgr.py:59} INFO - [0m12:22:22.260457 [info ] [MainThread]: 
+[2023-03-17T12:22:22.262+0000] {logging_mixin.py:137} INFO - 12:22:22  Completed successfully
+[2023-03-17T12:22:22.262+0000] {eventmgr.py:59} INFO - [0m12:22:22  [32mCompleted successfully[0m
+[2023-03-17T12:22:22.263+0000] {eventmgr.py:59} INFO - [0m12:22:22.262139 [info ] [MainThread]: [32mCompleted successfully[0m
+[2023-03-17T12:22:22.263+0000] {logging_mixin.py:137} INFO - 12:22:22
+[2023-03-17T12:22:22.263+0000] {eventmgr.py:59} INFO - [0m12:22:22  
+[2023-03-17T12:22:22.264+0000] {eventmgr.py:59} INFO - [0m12:22:22.263477 [info ] [MainThread]: 
+[2023-03-17T12:22:22.265+0000] {logging_mixin.py:137} INFO - 12:22:22  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[2023-03-17T12:22:22.265+0000] {eventmgr.py:59} INFO - [0m12:22:22  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[2023-03-17T12:22:22.265+0000] {eventmgr.py:59} INFO - [0m12:22:22.264746 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[2023-03-17T12:22:22.266+0000] {eventmgr.py:57} DEBUG - [0m12:22:22.266269 [debug] [MainThread]: Flushing usage events
+[2023-03-17T12:22:22.332+0000] {taskinstance.py:1318} INFO - Marking task as SUCCESS. dag_id=example_dbt, task_id=dbt_run_hourly, execution_date=20230317T110000, start_date=20230317T122214, end_date=20230317T122222
+[2023-03-17T12:22:22.390+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2023-03-17T12:22:22.422+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check

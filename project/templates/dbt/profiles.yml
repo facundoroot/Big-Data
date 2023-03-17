@@ -1,0 +1,24 @@
+transform:
+  outputs:
+
+    dev:
+      type: postgres
+      threads: 1
+      host: postgres_database
+      port: 5432
+      user: dw_user
+      pass: dw_password
+      dbname: analytics
+      schema: public
+
+    prod:
+      type: postgres
+      threads: 1
+      host: postgres_database
+      port: 5432
+      user: dw_user
+      pass: dw_password
+      dbname: analytics
+      schema: public
+
+  target: dev

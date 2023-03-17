@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "project"
+version = "0.1.0"
+description = "data-engineering-project"
+authors = ["Facundo Abrahan Cerimeli <facundoroot@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11.0"
+airflow-dbt-python = {version = "0.15.3", extras = ["postgres"]}
+apache-airflow-providers-mongo = "3.1.1"
+
+[tool.poetry.dev-dependencies]
+apache-airflow = {extras = ["postgres"], version = "^2.5.1"}
+pytest = "^7.2.1"
+colorlog = ">=4.0.2,<5.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
