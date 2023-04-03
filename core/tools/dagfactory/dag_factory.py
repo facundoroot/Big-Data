@@ -1,8 +1,8 @@
 from airflow.models.dag import DAG
 
-from project.tools.utils.helpers import logger 
-from project.tools.dagfactory.helpers import get_yaml_files_path, load_yaml_content
-from project.tools.dagfactory.task_factory import dbt_run_task
+from core.tools.utils.helpers import logger 
+from core.tools.dagfactory.helpers import get_yaml_files_path, load_yaml_content
+from core.tools.dagfactory.task_factory import dbt_run_task
 
 from pathlib import Path
 from datetime import datetime, timedelta

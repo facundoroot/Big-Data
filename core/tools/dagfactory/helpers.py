@@ -1,6 +1,6 @@
 import yaml
 
-from project.tools.utils.helpers import logger
+from core.tools.utils.helpers import logger
 
 from pathlib import Path
 
