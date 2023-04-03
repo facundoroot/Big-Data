@@ -1,0 +1,10 @@
+dag_config:
+  start_date: "2022-01-01"
+  schedule_interval: "@daily"
+  max_active_runs: 1
+  catchup: true
+  dag_id: yaml_defined_dag_example
+dag_tasks_plans:
+  models_name:
+    - my_first_dbt_model
+

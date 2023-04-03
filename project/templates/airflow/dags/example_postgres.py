@@ -4,7 +4,7 @@ from airflow.providers.postgres.operators.postgres import PostgresOperator
 
 from project.tools.utils.helpers import load_query_template
 
-DAG_ID = "example_Postgres"
+DAG_ID = "example_postgres"
 
 with DAG(
     dag_id=DAG_ID,
