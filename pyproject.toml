@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "project"
+name = "core"
 version = "0.1.0"
 description = "data-engineering-project"
 authors = ["Facundo Abrahan Cerimeli <facundoroot@gmail.com>"]
-exclude = ["project/templates/airflow/logs/*"]
+exclude = ["core/templates/airflow/logs/*"]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11.0"

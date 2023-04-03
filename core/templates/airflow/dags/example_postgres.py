@@ -2,7 +2,7 @@ from datetime import datetime
 from airflow import DAG
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 
-from project.tools.utils.helpers import load_query_template
+from core.tools.utils.helpers import load_query_template
 
 DAG_ID = "example_postgres"
 

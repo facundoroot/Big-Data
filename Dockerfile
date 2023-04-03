@@ -2,7 +2,7 @@
 # By using a multi-stage Dockerfile, you can take advantage of the layer caching mechanism of Docker to reuse the dependencies and packages installed in the earlier stages. The final stage can access those dependencies and use them to build your application without having to install them again. This can significantly reduce the size of your Docker image and the build time.
 
 # Inspiration: https://bmaingret.github.io/blog/2021-11-15-Docker-and-Poetry
-ARG PROJECT_NAME=project
+ARG PROJECT_NAME=core
 ARG PROJECT_PATH=/fac/$PROJECT_NAME
 ARG POETRY_VERSION=1.1.12
 ARG BUILD_PYTHON_VERSION=3.9.13
@@ -34,6 +34,8 @@ FROM base as build
 ARG PROJECT_PATH
 
 WORKDIR $PROJECT_PATH
+
+RUN ls -la
 RUN poetry build --format wheel
 
 # Final stage that install the module and its requirements

@@ -1,6 +1,6 @@
 from typing import Optional
 
-from project.tools.utils.helpers import logger 
+from core.tools.utils.helpers import logger 
 
 from airflow_dbt_python.operators.dbt import DbtRunOperator
 
