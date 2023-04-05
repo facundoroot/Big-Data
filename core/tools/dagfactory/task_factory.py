@@ -2,7 +2,8 @@ from typing import Optional
 
 from core.tools.utils.helpers import logger
 
-from airflow_dbt_python.operators.dbt import DbtRunOperator
+from airflow_dbt_python.operators.dbt import DbtRunOperator, DbtTestOperator
+from airflow.utils.task_group import TaskGroup
 
 from dotenv import load_dotenv
 
@@ -24,12 +25,23 @@ def dbt_run_task(model_name: str, task_id: str) -> DbtRunOperator:
     Returns: DbtRunOperator
     """
 
-    dbt_operator: DbtRunOperator = DbtRunOperator(
-        task_id=task_id,
-        project_dir=DBT_PROJECT_AND_PROFILES_DIR,
-        profiles_dir=DBT_PROJECT_AND_PROFILES_DIR,
-        models=[model_name],
-        full_refresh=False
-    )
+    with TaskGroup(group_id=model_name) as model_tg:
 
-    return dbt_operator
+        dbt_run_model: DbtRunOperator = DbtRunOperator(
+            task_id=f"run_{model_name}_model",
+            project_dir=DBT_PROJECT_AND_PROFILES_DIR,
+            profiles_dir=DBT_PROJECT_AND_PROFILES_DIR,
+            models=[model_name],
+            full_refresh=False
+        )
+
+        dbt_test_model: DbtTestOperator = DbtTestOperator(
+            task_id=f"test_{model_name}_model",
+            project_dir=DBT_PROJECT_AND_PROFILES_DIR,
+            profiles_dir=DBT_PROJECT_AND_PROFILES_DIR,
+            models=[model_name]
+        )
+
+        dbt_run_model >> dbt_test_model
+
+    return model_tg

@@ -36,6 +36,9 @@ x-airflow-common:
     - ./core/templates/airflow/plugins:/opt/airflow/plugins
     - ./core/templates/dbt:/opt/dbt
 
+      # bind core to package inside container so changes in local are reproduced on the container live
+    - ./core/tools:/home/airflow/.local/lib/python3.9/site-packages/core/tools
+
   user: "${AIRFLOW_UID}:${AIRFLOW_GID}"
   depends_on:
     - postgres
